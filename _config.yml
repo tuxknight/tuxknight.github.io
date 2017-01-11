@@ -9,13 +9,11 @@ highlighter: pygments
 # so be sure to set them if your theme uses them.
 #
 title : Tuxknight
-tagline: Site Tagline
+tagline: 
 author :
   name : Fuyuan.Chu
-  email : blah@email.test
-  github : username
-  twitter : username
-  feedburner : feedname
+  email : chufuyuan@live.cn 
+  github : tuxknight
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
@@ -82,7 +80,7 @@ JB :
   # Set 'provider' to false to turn commenting off globally.
   #
   comments :
-    provider : disqus
+    provider : duoshuo
     disqus :
       short_name : tuxknight
     livefyre :
@@ -95,7 +93,7 @@ JB :
       width: 580
       colorscheme: light
     duoshuo :
-      short_name : jekyllbootstrap
+      short_name : tuxknight
    
   # Settings for analytics helper
   # Set 'provider' to the analytics provider you want to use.
@@ -106,7 +104,7 @@ JB :
     gauges :
         site_id : 'SITE ID'
     google : 
-        tracking_id : 'UA-123-12'
+        tracking_id : 'TKUA-123-12'
     getclicky :
       site_id : 
     mixpanel :
