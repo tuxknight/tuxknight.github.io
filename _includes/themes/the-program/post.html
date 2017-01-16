@@ -5,6 +5,12 @@
 				<div class="unit-head">
 					<div class="unit-inner unit-head-inner">
 						<h1 class="h2 entry-title">{{ page.title }}</h1>
+                    <div class="author">
+                    <a href={{ site.home }}>tuxknight</a>
+                    <span class="createdat">{{ page.date | date: "%Y-%m-%d" }}</span>
+                    <span class="wordcount">{{ content | strip_html | strip_newlines | size }} words</span>
+                    <span class="readspeed">{{ content | strip_html | strip_newlines | size | divided_by:350 | round }} minutes to read</span>
+                    </div>
 					</div><!-- unit-inner -->
 				</div><!-- unit-head -->
 			</header>
@@ -20,7 +26,6 @@
 							<span class="day">{{ page.date | date: '%d' }}</span>
 							<span class="year">{{ page.date | date: '%Y' }}</span>
 							</date>
-                             字数: {{ page.content | }}
 						</p>
 						<ul class="list-category list-linear">
 							<li class="list-head">category: </li>

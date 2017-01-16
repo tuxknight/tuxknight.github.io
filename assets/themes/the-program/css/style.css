@@ -1482,3 +1482,16 @@ hr {
   *display: inline;
   float: right;
 }
+
+.author {
+    margin-bottom: 24px;
+    margin-top: 0px;
+}
+.author span {
+    margin-left: 20px;
+}
+
+.author a {
+    color: red;
+}
+
