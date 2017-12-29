@@ -1,6 +1,7 @@
 ---
 layout: page
 title: "zookeeper 4-letters commands"
+category: snippets
 group: snippets
 ---
 {% include JB/setup %}

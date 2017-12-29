@@ -1,6 +1,7 @@
 ---
 layout: page
 title: " 解决 Vmware 给虚拟机添加磁盘后看不到的问题"
+category: snippets
 group: snippets
 ---
 {% include JB/setup %}
