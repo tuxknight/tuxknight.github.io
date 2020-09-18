@@ -3,6 +3,7 @@ HTML5 display definitions from [HTML5 Boilerplate](http://j.mp/rP0wmY)
 
 No styleguide reference.
 */
+
 article,
 aside,
 details,
@@ -680,6 +681,22 @@ pre {
 .unit-article ul {
   list-style: square;
 }
+
+.unit-article .table-of-contents ul {
+  list-style: none;
+/*  padding-left: 20px;
+ */
+}
+.unit-article .table-of-contents ul ul{
+  list-style: simp-chinese-informal;
+  padding-left: 45px;
+}
+.unit-article .table-of-contents ol {
+  padding-left: 20px;
+}
+.unit-article .table-of-contents dl {
+  padding-left: 20px;
+}
 .unit-article ol {
   list-style: decimal;
 }
@@ -1029,7 +1046,7 @@ pre {
 @media only screen and (min-width: 1410px) {
   .the-header {
     float: left;
-    width: 19%;
+    width: 15%;
   }
   .the-header .unit-head {
     padding: 26px;
@@ -1067,7 +1084,7 @@ pre {
     -moz-box-shadow: #ffffff 0px 0px 2px;
     -o-box-shadow: #ffffff 0px 0px 2px;
     float: left;
-    width: 81%;
+    width: 85%;
     margin-right: -450px;
   }
   .body .unit-body {

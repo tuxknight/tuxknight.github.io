@@ -3,12 +3,16 @@
 permalink: /:categories/:year/:month/:day/:title 
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
-highlighter: pygments
+# highlighter: pygments
+highlighter: rouge
 
 markdown: kramdown                                                           
 kramdown:                                                                       
   input: GFM
   hard_wrap: false
+  syntax_highlighter_opts:
+    default_lang: html
+    css_class   : 'syntax'
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
@@ -30,8 +34,8 @@ author :
 production_url : http://tuxknight.github.io
 home: http://tuxknight.github.io
 
-# gems: ["jekyll-sitemap"]
-plugins: ["jekyll-sitemap"]
+gems: ["jekyll-sitemap","jekyll-toc"]
+plugins: ["jekyll-sitemap","jekyll-toc"]
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
