@@ -14,9 +14,13 @@
 					</div><!-- unit-inner -->
 				</div><!-- unit-head -->
 			</header>
+
+{% if page.toc==true %}
   <div class="table-of-contents">
-    {% toc %}
+    {% include themes/the-program/toc.html html=content %}
   </div>
+{% endif %}
+
 			<div class="bd">
 				<div class="entry-content">
 					{{ content }}
