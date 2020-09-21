@@ -28,9 +28,9 @@ fenced_code_blocks: true
 
 *string* 模块可以追溯到 Python 的最早版本。之前在此模块中实现的许多功能已变成了 `str` 对象的方法。当前，*string* 模块仍保留了一些有用的常量和类作为 `str` 对象的补充。
 
-* 函数
+### 函数
 
-  `capwords()` 函数将字符串中的所有单词首字母替换成大写字母。
+`capwords()` 函数将字符串中的所有单词首字母替换成大写字母。
 
 
 ```python
@@ -50,12 +50,13 @@ The quick brown fox jumped over the lazy dog.
 The Quick Brown Fox Jumped Over The Lazy Dog. 
 ```
 
+### 模板
 
-* 模板
+字符串模版在 [PEP 292](https://www.python.org/dev/peps/pep-0292) 被引入，旨在作为内置插值语法的一种替代。使用 _string.Template_ 插值时，通过在名称前加上 $（例如 $var ）来标识变量。另外，如果有必要将其与周围的文本区分开，还可以用花括号将它们包裹起来（例如${var}）。
 
-  字符串模版在 [PEP 292](https://www.python.org/dev/peps/pep-0292) 被引入，旨在作为内置插值语法的一种替代。使用 _string.Template_ 插值时，通过在名称前加上 $（例如 $var ）来标识变量。另外，如果有必要将其与周围的文本区分开，还可以用花括号将它们包裹起来（例如${var}）。
+本示例使用 % 操作符将简单模板与相似的字符串插值进行比较，并使用来比较新格式的字符串语法 str.format()。
 
-  本示例使用 % 操作符将简单模板与相似的字符串插值进行比较，并使用来比较新格式的字符串语法 str.format()。
+{% raw %}
 
 ```python
 # string_template.py
@@ -87,6 +88,8 @@ Variable in text: {var}iable
 
 print('FORMAT:', s.format(**values))
 ```
+
+{% endraw %}
 
   特殊字符 $ % { } 都可以通过重复两次的方式来表示字面意义。
 
@@ -138,9 +141,9 @@ ERROR: 'missing'
 safe_substitute(): foo is here but $missing is not provided
 ```
 
-* 模板进阶用法
+### 模板进阶用法
 
-  `string.Template`可以通过调整用于在模板主体中查找变量名称的正则表达式模式来更改其默认语法。一种简单的方法是更改 `delimiter`和`idpattern`类属性。
+`string.Template`可以通过调整用于在模板主体中查找变量名称的正则表达式模式来更改其默认语法。一种简单的方法是更改 `delimiter`和`idpattern`类属性。
 
 ```python
 # string_template_advanced.py 
@@ -238,13 +241,13 @@ SUBSTITUTED:
 replacement
 ```
 {% endraw %}
-* Formatter
+### Formatter
 
-  `Formatter`类实现了与 `str.format()`相同的布局规范语言。它的功能包括强制类型，对齐，属性和字段引用，命名和位置参数以及特定于类型的格式化选项。在大多数情况下，直接使用`format()`是更便捷的方式，但是`Formatter`提供了构建子类的一种方式，以便添加更多特性。
+`Formatter`类实现了与 `str.format()`相同的布局规范语言。它的功能包括强制类型，对齐，属性和字段引用，命名和位置参数以及特定于类型的格式化选项。在大多数情况下，直接使用`format()`是更便捷的方式，但是`Formatter`提供了构建子类的一种方式，以便添加更多特性。
 
-* 常量
+### 常量
 
-  `string` 模块包括许多与ASCII和数字字符集有关的常量。
+`string` 模块包括许多与ASCII和数字字符集有关的常量。
 
 ```python
 # string_constants.py
@@ -298,3 +301,256 @@ whitespace=' \t\n\r\x0b\x0c'
 
   4. [Format String Syntax](https://docs.python.org/3.5/library/string.html#format-string-syntax) -- Formatter 和 str.format() 所使用的布局规范语言的正式定义
 
+## *textwrap* -- 格式化文本段落
+
+> 目的：通过调整段落中换行的位置来设置文本格式
+
+*textwrap* 模块可用于格式化文本，以满足美化输出的需求。它提供的编程功能类似于许多文本编辑器和文字处理器中的段落换行或填充功能。
+
+### 示例数据
+
+本文中的示例数据如下：
+
+```python
+# textwrap_example.py
+sample_text = '''
+    The textwrap module can be used to format text for output in
+    situations where pretty-printing is desired.  It offers
+    programmatic functionality similar to the paragraph wrapping
+    or filling features found in many text editors.
+    '''
+```
+
+### fill -- 填充段落
+
+fill()` 函数将示例文本作为输入，并生成格式化的文本作为输出
+
+```python
+# textwrap_fill.py 
+import textwrap
+from textwrap_example import sample_text
+
+print(textwrap.fill(sample_text, width=50))
+```
+
+得到的结果如下，文本内容为左对齐，第一行保留了缩进，行首空格嵌入到了段落中。
+
+```bash
+$ python3 textwrap_fill.py
+
+     The textwrap module can be used to format
+text for output in     situations where pretty-
+printing is desired.  It offers     programmatic
+functionality similar to the paragraph wrapping
+or filling features found in many text editors.
+```
+
+### dedent -- 删除缩进
+
+前面的示例在输出中混合了多余的空格，使用  `dedent()` 从示例文本的所有行中删除公共空格前缀会产生更好的效果。同样可以用于处理 Python 代码中的 docstring。
+
+```python
+# textwrap_dedent.py 
+import textwrap
+from textwrap_example import sample_text
+
+dedented_text = textwrap.dedent(sample_text)
+print('Dedented:')
+print(dedented_text)
+```
+
+```bash
+python3 textwrap_dedent.py
+
+Dedented:
+
+The textwrap module can be used to format text for output in
+situations where pretty-printing is desired.  It offers
+programmatic functionality similar to the paragraph wrapping
+or filling features found in many text editors.
+```
+
+得到的结果是每行都删除了公共的空白前缀，但是如果一行的缩进量已经超过另外一行，则某些空白会无法被删除。
+
+以下的内容被处理之后，
+
+```
+␣Line one.
+␣␣␣Line two.
+␣Line three.
+```
+
+只有公共的空格被删除了，剩下的空格仍然被保留了下来。
+```
+Line one.
+␣␣Line two.
+Line three.
+```
+
+### 结合 fill 和 dedent
+
+使用 *dedent* 处理之后，再使用 *fill* 处理将产生指定宽度的文本输出。
+
+```python
+# textwrap_fill_width.py 
+import textwrap
+from textwrap_example import sample_text
+
+dedented_text = textwrap.dedent(sample_text).strip()
+for width in [45, 60]:
+    print('{} Columns:\n'.format(width))
+    print(textwrap.fill(dedented_text, width=width))
+    print()
+```
+
+
+
+### indent -- 缩进块
+
+使用 *indent* 功能可以为字符串的所有行添加公共前缀。
+
+```python
+# textwrap_indent.py 
+import textwrap
+from textwrap_example import sample_text
+
+dedented_text = textwrap.dedent(sample_text)
+wrapped = textwrap.fill(dedented_text, width=50)
+wrapped += '\n\nSecond paragraph after a blank line.'
+final = textwrap.indent(wrapped, '> ')
+
+print('Quoted block:\n')
+print(final)
+```
+
+文本块先按照换行符进行分割，然后为每段添加前缀，并返回新的字符串。
+
+```bash
+$ python3 textwrap_indent.py
+
+Quoted block:
+
+>  The textwrap module can be used to format text
+> for output in situations where pretty-printing is
+> desired.  It offers programmatic functionality
+> similar to the paragraph wrapping or filling
+> features found in many text editors.
+
+> Second paragraph after a blank line.
+```
+
+如要控制哪些行接收新前缀，可以将一个自定义的函数作为 *predicate* 参数传递给 *indent()*。将会为每一行文本调用该函数，并未返回值为 *true* 的行添加前缀。
+
+```python
+# textwrap_indent_predicate.py 
+
+import textwrap
+from textwrap_example import sample_text
+
+
+def should_indent(line):
+    print('Indent {!r}?'.format(line))
+    return len(line.strip()) % 2 == 0
+
+
+dedented_text = textwrap.dedent(sample_text)
+wrapped = textwrap.fill(dedented_text, width=50)
+final = textwrap.indent(wrapped, 'EVEN ',
+                        predicate=should_indent)
+
+print('\nQuoted block:\n')
+print(final)
+```
+
+本示例将前缀 'EVEN ' 添加到包含偶数个字符的行。
+
+```bash
+
+Indent ' The textwrap module can be used to format text\n'?
+Indent 'for output in situations where pretty-printing is\n'?
+Indent 'desired.  It offers programmatic functionality\n'?
+Indent 'similar to the paragraph wrapping or filling\n'?
+Indent 'features found in many text editors.'?
+
+Quoted block:
+
+EVEN  The textwrap module can be used to format text
+for output in situations where pretty-printing is
+EVEN desired.  It offers programmatic functionality
+EVEN similar to the paragraph wrapping or filling
+EVEN features found in many text editors.
+```
+
+### 悬浮缩进
+
+与设置字符宽度类似，可以对第一行设置单独的缩进规则。
+
+```bash
+textwrap_hanging_indent.py
+import textwrap
+from textwrap_example import sample_text
+
+dedented_text = textwrap.dedent(sample_text).strip()
+print(textwrap.fill(dedented_text,
+                    initial_indent='',
+                    subsequent_indent=' ' * 4,
+                    width=50,
+                    ))
+```
+
+这样就达到了首行悬浮的缩进效果。
+
+```bash
+# python3 textwrap_hanging_indent.py
+
+The textwrap module can be used to format text for
+    output in situations where pretty-printing is
+    desired.  It offers programmatic functionality
+    similar to the paragraph wrapping or filling
+    features found in many text editors.
+```
+
+### 长文本截断
+
+使用 *shorten()* 函数截断长文本以生成摘要或预览。所有的空白字符，包括制表符、换行符、连续空白等等，都会被替换为一个空格。之后，文本内容会根据文字的边界以不多于指定长度的方式被截断。
+
+```python
+# textwrap_shorten.py
+import textwrap
+from textwrap_example import sample_text
+
+dedented_text = textwrap.dedent(sample_text)
+original = textwrap.fill(dedented_text, width=50)
+
+print('Original:\n')
+print(original)
+
+shortened = textwrap.shorten(original, 100)
+shortened_wrapped = textwrap.fill(shortened, width=50)
+
+print('\nShortened:\n')
+print(shortened_wrapped)
+```
+
+非空白字符被截断后，会被一段占位符所替代。默认的占位符是 `[...]`，使用 *shorten()* 的 *placeholder* 参数可以自定义占位符。
+
+```bash
+$ python3 textwrap_shorten.py
+
+Original:
+
+ The textwrap module can be used to format text
+for output in situations where pretty-printing is
+desired.  It offers programmatic functionality
+similar to the paragraph wrapping or filling
+features found in many text editors.
+
+Shortened:
+
+The textwrap module can be used to format text for
+output in situations where pretty-printing [...]
+```
+
+* 参考资料
+
+1. [textwrap 模块的标准库文档](https://docs.python.org/3.7/library/textwrap.html)
