@@ -12,9 +12,11 @@ fenced_code_blocks: true
 
 # Text
 
-str 类是 Python 程序员所能获得的最常见的文字处理工具。但在标准库中也有很多其他工具，能够使文本的进阶操作变得简单。
+[toc]
 
-程序可以使用 `string.Template` 作为字符串参数化替换的简单的方法。尽管不如PIP中提供的许多Web框架或扩展模块所定义的模板那样功能丰富，但在需要将动态的值插入静态文本中时，使用 `string.Template` 是一个不错的过渡。
+*str* 类是 Python 程序员所能获得的最常见的文字处理工具。但在标准库中也有很多其他工具，能够使文本的进阶操作变得简单。
+
+程序可以使用 __string.Template__ 作为字符串参数化替换的简单的方法。尽管不如PIP中提供的许多Web框架或扩展模块所定义的模板那样功能丰富，但在需要将动态的值插入静态文本中时，使用 __string.Template__  是一个不错的过渡。
 
 [`textwrap`](https://pymotw.com/3/textwrap/index.html#module-textwrap) 模块包括实现诸如限制输出宽度，添加缩进，插入换行符等功能的工具。
 
@@ -24,7 +26,7 @@ str 类是 Python 程序员所能获得的最常见的文字处理工具。但�
 
 ## *string* -- 文本与模板
 
-`string` 模块可以追溯到 Python 的最早版本。之前在此模块中实现的许多功能已变成了 `str` 对象的方法。当前，`string` 模块仍保留了一些有用的常量和类作为 `str` 对象的补充。
+*string* 模块可以追溯到 Python 的最早版本。之前在此模块中实现的许多功能已变成了 `str` 对象的方法。当前，*string* 模块仍保留了一些有用的常量和类作为 `str` 对象的补充。
 
 * 函数
 
@@ -51,9 +53,9 @@ The Quick Brown Fox Jumped Over The Lazy Dog.
 
 * 模板
 
-  字符串模版在 [PEP 292](https://www.python.org/dev/peps/pep-0292) 被引入，旨在作为内置插值语法的一种替代。使用 `string.Template` 插值时，通过在名称前加上`$`（例如`$var`）来标识变量。另外，如果有必要将其与周围的文本区分开，还可以用花括号将它们包裹起来（例如`${var}`）。
+  字符串模版在 [PEP 292](https://www.python.org/dev/peps/pep-0292) 被引入，旨在作为内置插值语法的一种替代。使用 _string.Template_ 插值时，通过在名称前加上 $（例如 $var ）来标识变量。另外，如果有必要将其与周围的文本区分开，还可以用花括号将它们包裹起来（例如${var}）。
 
-  本示例使用`%`操作符将简单模板与相似的字符串插值进行比较，并使用来比较新格式的字符串语法`str.format()`。
+  本示例使用 % 操作符将简单模板与相似的字符串插值进行比较，并使用来比较新格式的字符串语法 str.format()。
 
 ```python
 # string_template.py
@@ -127,9 +129,9 @@ except KeyError as err:
 print('safe_substitute():', t.safe_substitute(values))
 ```
 
-  由于`missing`在值字典中没有用于的值，因此将a `KeyError`引起`substitute()`。`safe_substitute()`捕获错误并在文本中保留变量表达式，而不是引发错误。
+使用 `substitute()` 由于字典中没有 missing 的值，因此将引起 `KeyError`。`safe_substitute()`捕获错误并在文本中保留变量表达式，而不是引发错误。
 
-```python
+```bash
 $ python3 string_template_missing.py
   
 ERROR: 'missing'
@@ -177,7 +179,7 @@ Modified ID pattern:
   Ignored   : %notunderscored
 ```
 
-  对于更复杂的更改，可以覆盖`pattern`属性并定义一个全新的正则表达式。提供的模式必须包含四个用于捕获转义定界符的命名组，命名变量，变量名的大括号版本以及无效的定界符模式。
+  对于更复杂的更改，可以覆盖 `pattern` 属性并定义一个全新的正则表达式。提供的模式必须包含四个用于捕获转义定界符的命名组，命名变量，变量名的大括号版本以及无效的定界符模式。
 
 ```python
 # string_template_defaultpattern.py
@@ -288,10 +290,11 @@ whitespace=' \t\n\r\x0b\x0c'
 
 * 参考资料
 
-  1. string 模块的标准库文档](https://docs.python.org/3.7/library/string.html)
+  1. [string 模块的标准库文档](https://docs.python.org/3.7/library/string.html)
 
   2. [String Methods](https://docs.python.org/3/library/stdtypes.html#string-methods) -- str 对象中那些用来替代 string 函数的方法
 
   3. [PEP 292](https://www.python.org/dev/peps/pep-0292) -- Simpler String Substitutions
 
   4. [Format String Syntax](https://docs.python.org/3.5/library/string.html#format-string-syntax) -- Formatter 和 str.format() 所使用的布局规范语言的正式定义
+
