@@ -323,7 +323,7 @@ sample_text = '''
 
 ### fill -- 填充段落
 
-fill()` 函数将示例文本作为输入，并生成格式化的文本作为输出
+fill() 函数将示例文本作为输入，并生成格式化的文本作为输出
 
 ```python
 # textwrap_fill.py 
@@ -335,7 +335,7 @@ print(textwrap.fill(sample_text, width=50))
 
 得到的结果如下，文本内容为左对齐，第一行保留了缩进，行首空格嵌入到了段落中。
 
-```bash
+```
 $ python3 textwrap_fill.py
 
      The textwrap module can be used to format
@@ -464,7 +464,8 @@ print(final)
 
 本示例将前缀 'EVEN ' 添加到包含偶数个字符的行。
 
-```bash
+```
+$ python3 textwrap_indent_predicate.py
 
 Indent ' The textwrap module can be used to format text\n'?
 Indent 'for output in situations where pretty-printing is\n'?
@@ -500,7 +501,7 @@ print(textwrap.fill(dedented_text,
 
 这样就达到了首行悬浮的缩进效果。
 
-```bash
+```
 # python3 textwrap_hanging_indent.py
 
 The textwrap module can be used to format text for
@@ -534,7 +535,7 @@ print(shortened_wrapped)
 
 非空白字符被截断后，会被一段占位符所替代。默认的占位符是 `[...]`，使用 *shorten()* 的 *placeholder* 参数可以自定义占位符。
 
-```bash
+```
 $ python3 textwrap_shorten.py
 
 Original:
