@@ -5,5 +5,8 @@ description: ""
 category: "DevOps"
 tags: [the agile admin, 翻译, devops]
 group: post
+toc: true
+fenced_code_blocks: true
+comments: true
 ---
 {% include JB/setup %}

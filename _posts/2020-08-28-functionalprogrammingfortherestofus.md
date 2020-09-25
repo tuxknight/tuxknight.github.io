@@ -4,6 +4,8 @@ title: "FunctionalProgrammingForTheRestOfUs"
 description: ""
 category: Programming
 tags: [转载, 翻译, programming]
+toc: true
+fenced_code_blocks: true
 comments: true
 ---
 {% include JB/setup %}

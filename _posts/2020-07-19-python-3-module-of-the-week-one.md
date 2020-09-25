@@ -7,6 +7,7 @@ tags: [python, 翻译, 编程语言]
 group: post
 toc: true
 fenced_code_blocks: true
+comments: true
 ---
 {% include JB/setup %}
 

@@ -5,6 +5,7 @@ description: ""
 category: PyMOTW
 tags: [python, 翻译, 编程语言]
 group: post
+comments: true
 ---
 {% include JB/setup %}
 

@@ -6,6 +6,8 @@
   {% include custom/sharing %}
 {% when "jiathis" %}
   {% include JB/sharing-providers/jiathis %}
+{% when "baidushare" %}
+  {% include JB/sharing-providers/baidushare %}
 {% endcase %}
 
 {% endif %}
