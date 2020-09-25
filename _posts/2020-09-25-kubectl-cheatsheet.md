@@ -6,15 +6,18 @@ category: CheatSheet
 tags: [kubectl,kubernetes,cheatsheet]
 group: post
 fenced_code_blocks: true
+comments: true
 ---
+
 {% include JB/setup %}
 
 # kubectl 的进阶用法
+以下列出了一些使用 jsonpath 对 kubectl get 的结果进行定制化输出的操作
+
 {% raw %}
 
 * 查询 pod
 
-  
 ```bash
 kubectl get pods -o wide
 ```
@@ -61,7 +64,7 @@ kubectl get node -o jsonpath="{range .items[*]}{.metadata.name}{'\t'}{.status.ca
 kubectl get pod --all-namespaces -o jsonpath="{range .items[*]}{.spec.nodeName}{'\n'}{end}"|sort|uniq -c
 ```
 
-* 找出 DaemonSet 中为运行pod的节点
+* 找出 DaemonSet 中未运行 pod 的节点
 
 
 ```bash
@@ -75,7 +78,7 @@ kubectl get node|grep -v "$(kubectl -n ${ns} get pod --all-namespaces -o wide | 
 kubectl get pods —sort-by=.status.containerStatuses[0].restartCount
 ```
 
-* Pod 的requests limits
+* Pod 的 requests limits
 
 
 ```bash

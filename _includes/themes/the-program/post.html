@@ -70,9 +70,6 @@
                             <li><div class="twitter-follow"><a href="https://twitter.com/{{ site.author.twitter }}" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li> -->
                             <!-- </ul> -->
 					</div>
-					<div class="comment">
-					{% include JB/comments %}
-					</div>
 				</div><!-- misc-content -->
 			</div><!-- bd -->
 			<footer class="unit-foot">
@@ -95,7 +92,11 @@
 					</p>
 				</div>
 			</footer>
-
 		</div><!-- content -->
 	</div><!-- unit-inner -->
 </article>
+{% if page.comments %}
+<div class="comment">
+{% include JB/comments %}
+</div>
+{% endif %}
