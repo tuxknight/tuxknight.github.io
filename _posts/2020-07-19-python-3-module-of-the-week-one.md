@@ -425,7 +425,7 @@ print(final)
 
 文本块先按照换行符进行分割，然后为每段添加前缀，并返回新的字符串。
 
-```bash
+```
 $ python3 textwrap_indent.py
 
 Quoted block:
@@ -486,8 +486,8 @@ EVEN features found in many text editors.
 
 与设置字符宽度类似，可以对第一行设置单独的缩进规则。
 
-```bash
-textwrap_hanging_indent.py
+```python
+# textwrap_hanging_indent.py
 import textwrap
 from textwrap_example import sample_text
 
@@ -502,7 +502,7 @@ print(textwrap.fill(dedented_text,
 这样就达到了首行悬浮的缩进效果。
 
 ```
-# python3 textwrap_hanging_indent.py
+$ python3 textwrap_hanging_indent.py
 
 The textwrap module can be used to format text for
     output in situations where pretty-printing is

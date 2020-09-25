@@ -3,7 +3,7 @@ layout: post
 title: "FunctionalProgrammingForTheRestOfUs"
 description: ""
 category: Programming
-tags: 转载,翻译,programming
+tags: [转载, 翻译, programming]
 ---
 {% include JB/setup %}
 
