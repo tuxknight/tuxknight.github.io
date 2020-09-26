@@ -7,6 +7,7 @@ tags: [kubectl,kubernetes,cheatsheet]
 group: post
 fenced_code_blocks: true
 comments: true
+sharing: true
 ---
 
 {% include JB/setup %}
