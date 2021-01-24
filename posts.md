@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  首页
+title:  最新文章
 ---
 
 <ul class="posts">
